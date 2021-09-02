@@ -19,7 +19,7 @@ public class ButtonController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    // 按了就变图片，做UI动效；日后改这个来修改表现
+    // 按了就变图片，做UI动效表现
     {
         if(Input.GetKeyDown(KeyToPress))
         {

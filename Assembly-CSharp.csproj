@@ -54,9 +54,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ButtonController.cs" />
-    <Compile Include="Assets\Scripts\BeatScroller.cs" />
     <Compile Include="Assets\Scripts\NoteObject.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\BeatScroller.cs" />
+    <Compile Include="Assets\Scripts\NoteManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

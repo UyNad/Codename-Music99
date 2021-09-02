@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1332078970377621866}
   m_Layer: 0
   m_Name: 4Key-4
-  m_TagString: Untagged
+  m_TagString: Note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanBePressed: 0
   KeyToPress: 102
+  JudgementLines: {fileID: 5344081686022128180, guid: 8598abe862046df42936d151cd9b562f, type: 3}
 --- !u!61 &1332078970377621866
 BoxCollider2D:
   m_ObjectHideFlags: 0

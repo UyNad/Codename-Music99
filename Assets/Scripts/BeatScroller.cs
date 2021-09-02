@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BeatScroller : MonoBehaviour
 {
+    [Tooltip("BPM，决定滚动速度")]
     public float beatTempo;
 
     public bool hasStarted;
@@ -11,7 +12,7 @@ public class BeatScroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //bpm是一分钟多少beat，除以60就是一分钟几拍；需要和曲子的bpm保持一致
+        // bpm是一分钟多少beat，除以60就是一分钟几拍；需要和曲子的bpm保持一致
         beatTempo = beatTempo / 60f;
     }
 
@@ -28,7 +29,7 @@ public class BeatScroller : MonoBehaviour
 
         else
         {
-            //这个说实话没大看懂，一秒移动beat的y轴位移，为啥就是bpm了
+            // 这个说实话没看懂，一秒移动beat的y轴位移，为啥就是bpm了
             transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f);
         }
     }

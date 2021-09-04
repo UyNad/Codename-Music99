@@ -99,6 +99,9 @@ MonoBehaviour:
   CanBePressed: 0
   KeyToPress: 102
   JudgementLines: {fileID: 5344081686022128180, guid: 8598abe862046df42936d151cd9b562f, type: 3}
+  perfectEffect: {fileID: 1566679292424723946, guid: 1165eb535a6f1d741aa45bfba0df6ca7, type: 3}
+  goodEffect: {fileID: 1934377996715797608, guid: 9b80bc852a474194aaa0d9f0b3cbb93d, type: 3}
+  missEffect: {fileID: 1642144039221146904, guid: 2f19e0d762636924f9e1098d8b6c55a3, type: 3}
 --- !u!61 &1332078970377621866
 BoxCollider2D:
   m_ObjectHideFlags: 0

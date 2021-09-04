@@ -6,17 +6,23 @@ public class NoteManager : MonoBehaviour
 {
     public static NoteManager NMinstance;
     
-    // 初始化队列
+    // 初始化队列，先进先出，为了保证每次只按第一个
     public Queue<GameObject> key1 = new Queue<GameObject>();
     public Queue<GameObject> key2 = new Queue<GameObject>();
     public Queue<GameObject> key3 = new Queue<GameObject>();
     public Queue<GameObject> key4 = new Queue<GameObject>();
 
+    // 四条轨道的x位置
     public float key1_x;
     public float key2_x;
     public float key3_x;
     public float key4_x;
 
+    // 按一次只会判定一个，布尔值（相当傻逼，但能满足需求，所以就这么写了）
+    public bool key1_HasPressed = false;
+    public bool key2_HasPressed = false;
+    public bool key3_HasPressed = false;
+    public bool key4_HasPressed = false;
 
     //Manager生成note，以及加入队列；note自己判断自己是不是第一个，不是的话就不会触发hit事件
     public GameObject gameNote_1;
@@ -30,6 +36,8 @@ public class NoteManager : MonoBehaviour
     public float[] gameNoteKey2Group;
     public float[] gameNoteKey3Group;
     public float[] gameNoteKey4Group;
+
+    public BeatScroller BS;
 
     // 生成GameNote1的方法
     public void InsGameNote_1(float yPosition)
@@ -61,22 +69,23 @@ public class NoteManager : MonoBehaviour
         // 初始化GameNote1
         foreach (float i in gameNoteKey1Group)
         {
-            InsGameNote_1(i);
+            
+            InsGameNote_1(i * BS.beatTempo);
         }
         // 初始化GameNote2
         foreach (float i in gameNoteKey2Group)
         {
-            InsGameNote_2(i);
+            InsGameNote_2(i * BS.beatTempo);
         }
         // 初始化GameNote3
         foreach (float i in gameNoteKey3Group)
         {
-            InsGameNote_3(i);
+            InsGameNote_3(i * BS.beatTempo);
         }
         // 初始化GameNote4
         foreach (float i in gameNoteKey4Group)
         {
-            InsGameNote_4(i);
+            InsGameNote_4(i * BS.beatTempo);
         }
     }
     void Start()

@@ -40,6 +40,10 @@ public class GameManager : MonoBehaviour
     public Text shieldText;
     [Tooltip("引用的血条UI")]
     public Text healthText;
+    [Tooltip("引用的百分比UI")]
+    public Text percentText;
+    // [Tooltip("百分比UI的显示时间")]
+    // public float percentText_Lifetime;
     [Tooltip("引用的失败UI")]
     public GameObject failedText;
 
@@ -84,6 +88,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 如果
+
         // 看看自己是不是死了
         if (healthcount <= 0)
         {
@@ -138,7 +144,6 @@ public class GameManager : MonoBehaviour
     public void PerfectScored()
     {
         // 加分，然后更新UI
-        Debug.Log("Perfect");
         playerScore += perfectScore;
         scoreText.text = "Score: " + playerScore;
 
@@ -148,6 +153,9 @@ public class GameManager : MonoBehaviour
         // 加护盾值
         shieldGauge += perfectShield;
 
+        //更新百分比UI
+        percentText.text = "100%";
+
     }
 
     // 非完美判定（10%~90%）的得分事件
@@ -155,7 +163,6 @@ public class GameManager : MonoBehaviour
     public void GoodScored(float goodPercent)
     {
         // 加分，然后更新UI
-        Debug.Log("Fine");
         playerScore += (int)(fineScore * goodPercent);
         scoreText.text = "Score: " + playerScore;
 
@@ -164,6 +171,9 @@ public class GameManager : MonoBehaviour
 
         // 加护盾值
         shieldGauge += (int)(goodShield * goodPercent);
+
+        //更新百分比UI
+        percentText.text = goodPercent*100 + "%";
     }
 
     // 您miss了
@@ -171,9 +181,6 @@ public class GameManager : MonoBehaviour
     // 目前是将扣分事件直接写在里面
     public void NoteMissed()
     {
-        Debug.Log("Miss");
-
-
         //扣护甲，没护甲就扣血
         if (shieldcount > 0)
         {
@@ -185,6 +192,9 @@ public class GameManager : MonoBehaviour
             healthcount--;
             healthText.text = "health: " + healthcount;
         }
+
+        // 更新百分比UI
+        percentText.text = "0%";
     }
 
 
@@ -194,6 +204,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         BGM.Stop();
         failedText.SetActive(true);
+        percentText.text = "";
     }
 
 }

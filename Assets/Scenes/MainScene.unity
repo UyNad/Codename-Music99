@@ -123,6 +123,85 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &12238636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 12238637}
+  - component: {fileID: 12238639}
+  - component: {fileID: 12238638}
+  m_Layer: 5
+  m_Name: PercentText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &12238637
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12238636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1605572182}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.000015259}
+  m_SizeDelta: {x: 560.4, y: 164.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &12238638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12238636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &12238639
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12238636}
+  m_CullTransparentMesh: 0
 --- !u!4 &42740290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5791882559196533301, guid: d269308c362c7054c83feb4315a611ba, type: 3}
@@ -237,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0043a7d067bea3641bbd2c5cc4d3f8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatTempo: 220
+  beatTempo: 10
   hasStarted: 0
 --- !u!4 &287253768
 Transform:
@@ -269,41 +348,43 @@ MonoBehaviour:
   key2_x: -0.5
   key3_x: 0.5
   key4_x: 1.5
+  key1_HasPressed: 0
+  key2_HasPressed: 0
+  key3_HasPressed: 0
+  key4_HasPressed: 0
   gameNote_1: {fileID: 7164515010731228054, guid: 706472acac49f914fa74ef2470becfaf, type: 3}
   gameNote_2: {fileID: 8786301344209902092, guid: 315385d181404b44fae02aff77e6fa42, type: 3}
   gameNote_3: {fileID: 847066979469451005, guid: f32d1b5218d248941b11646473101db2, type: 3}
   gameNote_4: {fileID: 1332078970377621864, guid: 559b2a8e4ca6a82418b0a6540a8d6050, type: 3}
   gameNoteParent: {fileID: 287253766}
   gameNoteKey1Group:
-  - 5
-  - 7
+  - 0.5
+  - 2
+  - 3
+  - 4
   - 8
-  - 9
-  - 9.3
-  - 9.5
-  - 9.9
+  - 14
+  - 22
   - 9999
   gameNoteKey2Group:
-  - 22
+  - 0.6
   - 23
   - 24
   - 25
   - 33
-  - 99999
   gameNoteKey3Group:
   - 11
   - 12
   - 14
   - 15
   - 16
-  - 99999
   gameNoteKey4Group:
   - 55
   - 66
   - 77
   - 88
   - 99
-  - 999999
+  BS: {fileID: 287253767}
 --- !u!1 &325538175
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,7 +982,7 @@ RectTransform:
   - {fileID: 2030347560}
   - {fileID: 745663032}
   m_Father: {fileID: 1605572182}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1060,14 +1141,15 @@ MonoBehaviour:
   shieldcount: 3
   shieldcountNax: 5
   shieldGauge: 0
-  shieldThresholds: 100
+  shieldThresholds: 1
   perfectShield: 90
   goodShield: 10
-  healthcount: 100
+  healthcount: 2
   scoreText: {fileID: 1791990394}
   feverText: {fileID: 2046179001}
   shieldText: {fileID: 1821571867}
   healthText: {fileID: 1813164730}
+  percentText: {fileID: 12238638}
   failedText: {fileID: 1894841108}
   playerScore: 0
   perfectScore: 100
@@ -1566,6 +1648,7 @@ RectTransform:
   - {fileID: 2046179000}
   - {fileID: 1821571866}
   - {fileID: 1813164729}
+  - {fileID: 12238637}
   - {fileID: 1894841109}
   - {fileID: 766832846}
   m_Father: {fileID: 0}
@@ -2036,7 +2119,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1605572182}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

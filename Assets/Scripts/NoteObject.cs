@@ -16,7 +16,7 @@ public class NoteObject : MonoBehaviour
     [Tooltip("判定线，用来取Y轴位置")]
     public GameObject JudgementLines;
 
-    public 
+    public GameObject perfectEffect, goodEffect, missEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -28,83 +28,118 @@ public class NoteObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //如果松开的是A：key1状态未按下
+        if(KeyToPress == KeyCode.A & Input.GetKeyUp(KeyToPress))
+        {
+            NoteManager.NMinstance.key1_HasPressed = false;
+        }
+
+        //如果松开的是S：key2状态未按下
+        if (KeyToPress == KeyCode.S & Input.GetKeyUp(KeyToPress))
+        {
+            NoteManager.NMinstance.key2_HasPressed = false;
+        }
+
+        //如果松开的是D：key3状态未按下
+        if (KeyToPress == KeyCode.D & Input.GetKeyUp(KeyToPress))
+        {
+            NoteManager.NMinstance.key3_HasPressed = false;
+        }
+
+        //如果松开的是F：key4状态未按下
+        if (KeyToPress == KeyCode.F & Input.GetKeyUp(KeyToPress))
+        {
+            NoteManager.NMinstance.key4_HasPressed = false;
+        }
+
+        //如果key1还有得按：不断检测是否按到key1，并触发得分事件
         if (NoteManager.NMinstance.key1.Count != 0)
         {
+
             if(gameObject == NoteManager.NMinstance.key1.Peek())
             {
-                print("1st");
-                if (Input.GetKeyDown(KeyToPress))
+                if (NoteManager.NMinstance.key1_HasPressed == false)
                 {
-                    if(CanBePressed)
+                    if (Input.GetKeyDown(KeyToPress))
                     {
-                        CalculateScore();
-                        NoteManager.NMinstance.key1.Dequeue();
-                    }    
+
+                        if (CanBePressed)
+                        {
+                            NoteManager.NMinstance.key1_HasPressed = true;
+                            CalculateScore();
+                            NoteManager.NMinstance.key1.Dequeue();
+                        }
+                    }
                 }
+
             }
         }
+
+        //如果key2还有得按：不断检测是否按到key2，并触发得分事件
         if (NoteManager.NMinstance.key2.Count != 0)
         {
             if (gameObject == NoteManager.NMinstance.key2.Peek())
             {
-                print("2nd");
-                if (Input.GetKeyDown(KeyToPress))
+                if (NoteManager.NMinstance.key2_HasPressed == false)
                 {
-                    if (CanBePressed)
+                    if (Input.GetKeyDown(KeyToPress))
                     {
-                        CalculateScore();
-                        NoteManager.NMinstance.key2.Dequeue();
+                        if (CanBePressed)
+                        {
+                            NoteManager.NMinstance.key2_HasPressed = true;
+                            CalculateScore();
+                            NoteManager.NMinstance.key2.Dequeue();
+                        }
                     }
                 }
+
             }
         }
+
+        //如果key3还有得按：不断检测是否按到key3，并触发得分事件
         if (NoteManager.NMinstance.key3.Count != 0)
         {
             if (gameObject == NoteManager.NMinstance.key3.Peek())
             {
-                print("3rd");
-                if (Input.GetKeyDown(KeyToPress))
+                if (NoteManager.NMinstance.key3_HasPressed == false)
                 {
-                    if (CanBePressed)
+                    if (Input.GetKeyDown(KeyToPress))
                     {
-                        CalculateScore();
-                        NoteManager.NMinstance.key3.Dequeue();
+                        if (CanBePressed)
+                        {
+                            NoteManager.NMinstance.key3_HasPressed = true;
+                            CalculateScore();
+                            NoteManager.NMinstance.key3.Dequeue();
+                        }
                     }
                 }
+
             }
         }
+
+        //如果key4还有得按：不断检测是否按到key4，并触发得分事件
         if (NoteManager.NMinstance.key4.Count != 0)
         {
             if (gameObject == NoteManager.NMinstance.key4.Peek())
             {
-                print("4st");
-                if (Input.GetKeyDown(KeyToPress))
+                if (NoteManager.NMinstance.key4_HasPressed == false)
                 {
-                    if (CanBePressed)
+                    if (Input.GetKeyDown(KeyToPress))
                     {
-                        CalculateScore();
-                        NoteManager.NMinstance.key4.Dequeue();
+                        if (CanBePressed)
+                        {
+                            NoteManager.NMinstance.key4_HasPressed = true;
+                            CalculateScore();
+                            NoteManager.NMinstance.key4.Dequeue();
+                        }
                     }
                 }
+
             }
         }
-        //if (this.gameObject == NoteManager.NMinstance.key1.Peek() | this.gameObject == NoteManager.NMinstance.key2.Peek() | this.gameObject == NoteManager.NMinstance.key3.Peek() | this == NoteManager.NMinstance.key4.Peek())
-        //{
-        //    print("1st");
-        //    // 如果触发了对应按键
-        //    if (Input.GetKeyDown(KeyToPress))
-        //    {
-        //        // 如果此时可以判定
-        //        if (CanBePressed)
-        //        {
 
-        //            CalculateScore();
-
-        //            IfPeekLeave();
-        //        }
-        //    }
-        //}
     }
+
 
     private void CalculateScore()
     {
@@ -116,6 +151,7 @@ public class NoteObject : MonoBehaviour
             GameManager.GMinstance.PerfectScored();
             GameManager.GMinstance.FeverUp();
             GameManager.GMinstance.ShieldUp();
+            Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
         }
         // Note大于100%距离但小于10%距离时
         else if (noteDistance > GameManager.GMinstance.perfectInterval && noteDistance < GameManager.GMinstance.missInterval)
@@ -123,17 +159,17 @@ public class NoteObject : MonoBehaviour
             goodPercent = Mathf.Ceil(Mathf.Abs(noteDistance - GameManager.GMinstance.goodInterval)
                 / ((GameManager.GMinstance.goodInterval - GameManager.GMinstance.perfectInterval) / 9)) / 10;
 
-            // debug打印
-            print(goodPercent);
 
             GameManager.GMinstance.GoodScored(goodPercent);
             GameManager.GMinstance.FeverUp();
             GameManager.GMinstance.ShieldUp();
+            Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
         }
         // Note大于MISS距离时
         else if (noteDistance >= GameManager.GMinstance.missInterval)
         {
             GameManager.GMinstance.NoteMissed();
+            Instantiate(missEffect, transform.position, missEffect.transform.rotation);
         }
 
 
@@ -181,7 +217,9 @@ public class NoteObject : MonoBehaviour
         {
             CanBePressed = false;
             GameManager.GMinstance.NoteMissed();
+            gameObject.SetActive(false);
             IfPeekLeave();
+            Instantiate(missEffect, transform.position, missEffect.transform.rotation);
         }
     }
 }

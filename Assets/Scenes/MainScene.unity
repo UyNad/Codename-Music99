@@ -358,32 +358,32 @@ MonoBehaviour:
   gameNote_4: {fileID: 1332078970377621864, guid: 559b2a8e4ca6a82418b0a6540a8d6050, type: 3}
   gameNoteParent: {fileID: 287253766}
   gameNoteKey1Group:
-  - 0.5
+  - 1
   - 2
-  - 3
+  - 2.5
   - 4
-  - 8
-  - 14
+  - 5.5
+  - 6
   - 22
   - 9999
   gameNoteKey2Group:
-  - 0.6
-  - 23
-  - 24
-  - 25
+  - 1.5
+  - 2.5
+  - 4
+  - 7
   - 33
   gameNoteKey3Group:
-  - 11
-  - 12
-  - 14
-  - 15
-  - 16
+  - 3
+  - 3.3
+  - 4.3
+  - 3.9
+  - 10
   gameNoteKey4Group:
-  - 55
-  - 66
-  - 77
-  - 88
-  - 99
+  - 1.8
+  - 2.7
+  - 3.3
+  - 3.7
+  - 4.5
   BS: {fileID: 287253767}
 --- !u!1 &325538175
 GameObject:
